@@ -14,10 +14,11 @@ public class Main {
 
     public Main() {
 //        Load in data
-        List<Instance> instances = Loader.load("src/part2/spamLabelled.dat");
+        List<Instance> training = Loader.load("src/part2/spamLabelled.dat", false);
+        List<Instance> test = Loader.load("src/part2/spamUnLabelled.dat", true);
 
-        NaiveBayes naiveBayes = new NaiveBayes(instances);
-
+        NaiveBayes naiveBayes = new NaiveBayes(training);
+        naiveBayes.classify(test);
     }
 
     public static void main(String[] args) {

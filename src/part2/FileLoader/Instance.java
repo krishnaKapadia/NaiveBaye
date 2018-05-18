@@ -16,6 +16,12 @@ public class Instance {
         outcome = (outcomeValue == 1) ? "spam" : "not spam";
     }
 
+    public Instance(int outcomeValue, Integer... values) {
+        this.values = values;
+        this.outcomeValue = outcomeValue;
+        outcome = (outcomeValue == 1) ? "spam" : "not spam";
+    }
+
     /**
      * Gets the string representation of the outcome
      * @return String either "spam" or "not spam"
@@ -33,6 +39,16 @@ public class Instance {
     }
 
     /**
+     * Sets the outcome of the instance
+     * @param outcome to set to
+     */
+    public void setOutcome(int outcome) {
+        this.outcomeValue = outcome;
+        this.outcome = (outcomeValue == 1) ? "spam" : "not spam";
+        System.out.println(outcome);
+    }
+
+    /**
      * Returns a array of instance values
      * @return Integer[] values
      */
@@ -46,6 +62,7 @@ public class Instance {
     public void print() {
         System.out.print("Instance: [");
         for(Integer i : values) System.out.print(i + ", ");
+        System.out.print(outcome);
         System.out.print("]\n");
     }
 

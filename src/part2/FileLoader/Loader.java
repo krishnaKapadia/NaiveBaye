@@ -15,9 +15,10 @@ public class Loader {
     /**
      * Loads a file and generates a list of instances based off the data
      * @param filepath String path to file
+     * @param test, whether test file or not
      * @return List<Instance> List of instances
      */
-    public static List<Instance> load(String filepath) {
+    public static List<Instance> load(String filepath, boolean test) {
         File target = new File(filepath);
         List<Instance> instances = new ArrayList<>();
 
@@ -25,12 +26,17 @@ public class Loader {
             Scanner scan = new Scanner(target);
 
             while(scan.hasNext()) {
-                Integer[] values = new Integer[13];
-                for (int i = 0; i < 13; i++) {
+                Integer[] values = new Integer[12];
+                for (int i = 0; i < 12; i++) {
                     values[i] = scan.nextInt();
                 }
 
-                instances.add(new Instance(values));
+                if(test) {
+                    instances.add(new Instance(values));
+                }else {
+                    int outcome = scan.nextInt();
+                    instances.add(new Instance(outcome, values));
+                }
             }
 
             scan.close();
@@ -49,8 +55,6 @@ public class Loader {
     public static Integer[] toIntArray(String[] values) {
         Integer[] intValues = new Integer[values.length];
         for(String s : values) System.out.println(s);
-
-//        intValues = ((Integer[])Arrays.stream(values).map(Integer::parseInt).toArray());
         return intValues;
     }
 
