@@ -66,4 +66,20 @@ public class Instance {
         System.out.print("]\n");
     }
 
+    public String toString() {
+        StringBuilder b = new StringBuilder("Instance: [");
+
+        for(Integer i : values) {
+            b.append(i);
+            b.append(", ");
+        }
+
+        b.append(outcomeValue);
+        b.append(", Classification: ");
+        b.append(outcome);
+        b.append("]\n");
+
+        return b.toString();
+    }
+
 }

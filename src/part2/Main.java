@@ -4,6 +4,7 @@ import part2.FileLoader.Instance;
 import part2.FileLoader.Loader;
 import part2.NaiveBayes.NaiveBayes;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,7 +19,14 @@ public class Main {
         List<Instance> test = Loader.load("src/part2/spamUnLabelled.dat", true);
 
         NaiveBayes naiveBayes = new NaiveBayes(training);
-        naiveBayes.classify(test);
+        List<Instance> classified = naiveBayes.classify(test);
+
+//        try {
+//            Loader.write(classified);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
     public static void main(String[] args) {

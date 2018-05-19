@@ -1,7 +1,6 @@
 package part2.FileLoader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -45,6 +44,21 @@ public class Loader {
         }
 
         return instances;
+    }
+
+    /**
+     * Writes instance list to file
+     * @param instances, to save
+     * @throws IOException
+     */
+    public static void write(List<Instance> instances) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("sampleoutput.txt"));
+
+        for(Instance i : instances) {
+            writer.append(i.toString());
+        }
+
+        writer.close();
     }
 
     /**

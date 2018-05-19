@@ -1,6 +1,5 @@
 package part2.NaiveBayes;
 
-import javafx.util.Pair;
 import part2.FileLoader.Instance;
 
 import java.util.*;
@@ -37,7 +36,7 @@ public class NaiveBayes {
      * Classifies the unknown outcome instances
      * @param instances, Unknown instances
      */
-    public void classify(List<Instance> instances) {
+    public List<Instance> classify(List<Instance> instances) {
 
         for(Instance i : instances) {
             double spamProb = applyBayes(i, spamAttProbs, true);
@@ -48,6 +47,8 @@ public class NaiveBayes {
         }
 
         instances.forEach(Instance::print);
+
+        return instances;
     }
 
     /**
