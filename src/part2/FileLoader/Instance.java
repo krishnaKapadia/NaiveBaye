@@ -45,7 +45,6 @@ public class Instance {
     public void setOutcome(int outcome) {
         this.outcomeValue = outcome;
         this.outcome = (outcomeValue == 1) ? "spam" : "not spam";
-        System.out.println(outcome);
     }
 
     /**

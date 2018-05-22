@@ -33,10 +33,21 @@ public class NaiveBayes {
     }
 
     /**
+     * Prints the probability tables
+     */
+    public void printTable() {
+        for (int i = 0; i < spamAttProbs.length; i++) {
+            System.out.println("F" + i + " = Spam, P(Spam = T): " + spamAttProbs[i] + ", P(Spam = F): " + notSpamAttProbs[i]);
+            System.out.println("F" + i + " = NotSpam, P(NotSpam = T): " + (1 - spamAttProbs[i]) + ", P(NotSpam = F): " + (1 - notSpamAttProbs[i]));
+        }
+    }
+
+    /**
      * Classifies the unknown outcome instances
      * @param instances, Unknown instances
      */
     public List<Instance> classify(List<Instance> instances) {
+        int index = 1;
 
         for(Instance i : instances) {
             double spamProb = applyBayes(i, spamAttProbs, true);
@@ -44,6 +55,8 @@ public class NaiveBayes {
 
             if(spamProb > notSpamProb) i.setOutcome(1);
             else i.setOutcome(0);
+
+            System.out.println("F " + index++ + ": P(Spam = T): " + spamProb + ", P(NotSpam = T): " + notSpamProb + " Therefore outcome: " + i.getOutcome());
         }
 
         instances.forEach(Instance::print);

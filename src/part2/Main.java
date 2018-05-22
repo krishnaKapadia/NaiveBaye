@@ -3,8 +3,6 @@ package part2;
 import part2.FileLoader.Instance;
 import part2.FileLoader.Loader;
 import part2.NaiveBayes.NaiveBayes;
-
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,7 +18,7 @@ public class Main {
 
         NaiveBayes naiveBayes = new NaiveBayes(training);
         List<Instance> classified = naiveBayes.classify(test);
-
+        naiveBayes.printTable();
 //        try {
 //            Loader.write(classified);
 //        } catch (IOException e) {
